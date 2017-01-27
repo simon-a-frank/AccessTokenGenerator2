@@ -1,13 +1,9 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Deployment.Application;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AccessTokenManager2
@@ -74,6 +70,10 @@ namespace AccessTokenManager2
         private void buttonStart_Click(object sender, EventArgs e)
         {
 
+            //Reset des letzten Access-Token
+            textBoxAccessToken.Text = "";
+            textBoxAccessToken.BackColor = SystemColors.Control;
+            
             string errorMessage = "";
 
             //erforderliche Felder prüfen
@@ -173,7 +173,7 @@ namespace AccessTokenManager2
                     + "&grant_type=authorization_code"
                     + "&redirect_uri=" + textBoxRedirectionUrl.Text
                     + "&code=" + code;
-
+                
                 logMessage("Get Access Token with Code, Params: " + parametersForPost);
 
                 string antwort=oAuthTools.getTokenWithAuthCode(parametersForPost, textBoxEndpoint.Text);
