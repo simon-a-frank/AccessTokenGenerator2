@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ArrayOfSocialNetwork xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SocialNetwork>
+    <NetworkName>Facebook</NetworkName>
+    <RedirectUri>https://www.facebook.com/connect/login_success.html</RedirectUri>
+    <AuthServer>https://www.facebook.com/dialog/oauth</AuthServer>
+    <Endpoint>https://graph.facebook.com/oauth/access_token</Endpoint>
+    <GrantType>both</GrantType>
+    <ButtonA>Get My Profile Data</ButtonA>
+    <ApiTestA>https://graph.facebook.com/me?access_token=</ApiTestA>
+    <ButtonB>Get managed pages</ButtonB>
+    <ApiTestB>https://graph.facebook.com/me/accounts?access_token=</ApiTestB>
+    <ButtonC>Get last posts</ButtonC>
+    <ApiTestC>https://graph.facebook.com/me/feed/?access_token=</ApiTestC>
+    <ScopeInfo>https://developers.facebook.com/docs/facebook-login/permissions</ScopeInfo>
+    <Scopes>
+      <Scope>
+        <ScopeName>manage_pages</ScopeName>
+      </Scope>
+      <Scope>
+        <ScopeName>pages_show_list</ScopeName>
+      </Scope>
+      <Scope>
+        <ScopeName>public_profile</ScopeName>
+      </Scope>
+      <Scope>
+        <ScopeName>user_about_me</ScopeName>
+      </Scope>
+      <Scope>
+        <ScopeName>user_posts</ScopeName>
+      </Scope>
+      <Scope>
+        <ScopeName>user_photos</ScopeName>
+      </Scope>
+      <Scope>
+        <ScopeName>user_managed_groups</ScopeName>
+      </Scope>
+      <Description>
+        Für den API-Test "Get manageged pages" ist die Scope "manage_pages", für "Get last posts" die Scope "user_post" erforderlich.
+      </Description>
+    </Scopes>
+  </SocialNetwork>
+  <SocialNetwork>
+    <NetworkName>LinkedIn</NetworkName>
+    <RedirectUri></RedirectUri>
+    <AuthServer>https://www.linkedin.com/oauth/v2/authorization</AuthServer>
+    <Endpoint>https://www.linkedin.com/oauth/v2/accessToken</Endpoint>    
+    <GrantType>code</GrantType>
+    <ButtonA>Get Basic Data</ButtonA>
+    <ApiTestA>https://api.linkedin.com/v1/people/~?format=json&amp;oauth2_access_token=</ApiTestA>
+    <ButtonB>Get Picture-URL</ButtonB>
+    <ApiTestB>https://api.linkedin.com/v1/people/~:(picture-url)?format=json&amp;oauth2_access_token=</ApiTestB>
+    <ButtonC>Get Description</ButtonC>
+    <ApiTestC>https://api.linkedin.com/v1/people/~:(summary)?format=json&amp;oauth2_access_token=</ApiTestC>
+    <ScopeInfo>https://developer.linkedin.com/docs/oauth2-legacy#permissions</ScopeInfo>
+    <Scopes>
+      <Scope>
+        <ScopeName>r_fullprofile</ScopeName>
+      </Scope>
+      <Scope>
+        <ScopeName>r_emailaddress</ScopeName>
+      </Scope>
+      <Scope>
+        <ScopeName>w_share</ScopeName>
+      </Scope>
+    </Scopes>
+    <Description>
+      LinkedIn unterstützt nur Grant-Type Auth-Code. 
+      
+      Scopes werden bei LinkedIn mit Leerzeichen statt mit Kommas getrennt.
+    </Description>
+  </SocialNetwork>
+  <SocialNetwork>
+    <NetworkName>Google</NetworkName>
+    <RedirectUri>http://127.0.0.1</RedirectUri>
+    <AuthServer>https://accounts.google.com/o/oauth2/v2/auth</AuthServer>
+    <Endpoint>https://www.googleapis.com/oauth2/v4/token</Endpoint>
+    <GrantType>code</GrantType>
+    <ButtonA>Calendar List</ButtonA>
+    <ApiTestA>https://www.googleapis.com/calendar/v3/users/me/calendarList?access_token=</ApiTestA>
+    <ButtonB>Pimary Calendar Info</ButtonB>
+    <ApiTestB>https://www.googleapis.com/calendar/v3/calendars/primary?access_token=</ApiTestB>
+    <ButtonC>Events primary Calendar</ButtonC>
+    <ApiTestC>https://www.googleapis.com/calendar/v3/calendars/primary/events?access_token=</ApiTestC>
+    <ScopeInfo>https://developers.google.com/identity/protocols/googlescopes</ScopeInfo>
+    <Scopes>
+      <Scope>
+        <ScopeName>https://www.googleapis.com/auth/calendar.readonly</ScopeName>
+      </Scope>
+      <Scope>
+        <ScopeName>https://mail.google.com/</ScopeName>
+      </Scope>
+      <Scope>
+        <ScopeName>https://www.googleapis.com/auth/plus.me</ScopeName>
+      </Scope>
+      <Scope>
+        <ScopeName>https://www.googleapis.com/auth/urlshortener</ScopeName>
+      </Scope>
+      <Scope>
+        <ScopeName>https://www.googleapis.com/auth/youtube</ScopeName>
+      </Scope>
+      <Scope>
+        <ScopeName>https://www.googleapis.com/auth/analytics</ScopeName>
+      </Scope>
+    </Scopes>
+    <Description>
+      Google unterstützt nur Grant-Type Auth-Code. 
+      
+      Die Redirect-URL 127.0.0.1 erfordert nicht, dass hier am localhost ein Webserver o. Ä. zu erreichen ist - die Fehlermeldung im Browserfenster kann ignoriert werden.
+    </Description>
+  </SocialNetwork>
+  <SocialNetwork>
+    <NetworkName>Instagram</NetworkName>
+    <RedirectUri></RedirectUri>
+    <AuthServer>https://api.instagram.com/oauth/authorize/</AuthServer>
+    <Endpoint>https://api.instagram.com/oauth/access_token</Endpoint>
+    <GrantType>both</GrantType>
+    <ButtonA>Get User info</ButtonA>
+    <ApiTestA>https://api.instagram.com/v1/users/self/?access_token=</ApiTestA>
+    <ButtonB>Last posts</ButtonB>
+    <ApiTestB>https://api.instagram.com/v1/users/self/media/recent/?access_token=</ApiTestB>
+    <ButtonC>List of followers</ButtonC>
+    <ApiTestC>https://api.instagram.com/v1/users/self/follows?access_token=</ApiTestC>
+    <ScopeInfo>https://www.instagram.com/developer/authorization/</ScopeInfo>
+    <Scopes>
+      <Scope>
+        <ScopeName>basic</ScopeName>
+      </Scope>
+      <Scope>
+        <ScopeName>public_content</ScopeName>
+      </Scope>
+      <Scope>
+        <ScopeName>follower_list</ScopeName>
+      </Scope>
+      <Scope>
+        <ScopeName>comments</ScopeName>
+      </Scope>
+      <Scope>
+        <ScopeName>relationships</ScopeName>
+      </Scope>
+      <Scope>
+        <ScopeName>likes</ScopeName>
+      </Scope>
+    </Scopes>
+    <Description>
+      Via Instagram-API kann man keine Bilder posten, aber diverse Daten abrufen und Kommentare schreiben.
+
+      Scopes werden in Instagram mit + verknüpft. 
+      
+      Für den API Test 'List of followers' ist die Scope 'follower_list' erforderlich und Daten werden im 'Sandbox-Mode' nicht angezeigt.
+    </Description>
+  </SocialNetwork>
+  <SocialNetwork>
+    <NetworkName>Pinterest</NetworkName>
+    <RedirectUri>https://localhost</RedirectUri>
+    <AuthServer>https://api.pinterest.com/oauth/</AuthServer>
+    <Endpoint>https://api.pinterest.com/v1/oauth/token</Endpoint>
+    <GrantType>both</GrantType>
+    <ButtonA>User Info</ButtonA>
+    <ApiTestA>https://api.pinterest.com/v1/me/?access_token=</ApiTestA>
+    <ButtonB>Last Pin</ButtonB>
+    <ApiTestB>https://api.pinterest.com/v1/me/pins/?fields=id,creator,note&amp;limit=1&amp;access_token=</ApiTestB>
+    <ButtonC>Read Followers</ButtonC>
+    <ApiTestC>https://api.pinterest.com/v1/me/followers/?access_token=</ApiTestC>
+    <ScopeInfo>https://developers.pinterest.com/docs/api/overview/?#scopes</ScopeInfo>
+    <Scopes>
+      <Scope>
+        <ScopeName>read_public,write_public</ScopeName>
+      </Scope>
+      <Scope>
+        <ScopeName>write_public</ScopeName>
+      </Scope>
+      <Scope>
+        <ScopeName>read_public</ScopeName>
+      </Scope>
+      <Scope>
+        <ScopeName>read_relationships</ScopeName>
+      </Scope>
+      <Scope>
+        <ScopeName>write_relationships</ScopeName>
+      </Scope>
+    </Scopes>
+    <Description>
+      Bei Pinterest ist Scope ein Pflichtfeld. Obwohl bei Redirect 'localhost' anzugeben ist, ist es nicht erforderlich, dass hier tatsächlich eine Website erreichbar ist, die Fehlermeldung im Browserfenster kann ignoriert werden.
+
+      Für den API-Test 'Last Pin' ist die Scope 'read_public' erforderlich, für 'Read Followers' die Scope 'Read Relationship'.
+    </Description>
+  </SocialNetwork>
+  <SocialNetwork>
+    <NetworkName>Custom</NetworkName>
+    <RedirectUri></RedirectUri>
+    <AuthServer></AuthServer>
+    <Endpoint></Endpoint>
+    <GrantType>both</GrantType>
+    <ButtonA>na</ButtonA>
+    <ApiTestA></ApiTestA>
+    <ButtonB>na</ButtonB>
+    <ApiTestB></ApiTestB>
+    <ButtonC>na</ButtonC>
+    <ApiTestC></ApiTestC>
+    <ScopeInfo></ScopeInfo>
+    <Scopes>
+      <Scope>
+        <ScopeName></ScopeName>
+      </Scope>
+    </Scopes>
+    <Description></Description>
+  </SocialNetwork>
+</ArrayOfSocialNetwork>
