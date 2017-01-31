@@ -131,7 +131,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="GUI\Key.ico" />
     <Content Include="Key.ico" />
     <Content Include="SocialNetworks.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
