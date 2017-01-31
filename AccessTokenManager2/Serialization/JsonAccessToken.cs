@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Runtime.Serialization;
 
 
-namespace AccessTokenManager2
+namespace AccessTokenGenerator2
 {
     [DataContract]
     class JsonAccessToken

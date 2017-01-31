@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AccessTokenManager2
+namespace AccessTokenGenerator2
 {
     public class SocialNetwork
     {

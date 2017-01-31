@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 
 
 //TODO alle Kommentare übersetzen
-namespace AccessTokenManager2
+namespace AccessTokenGenerator2
 {
     static class Program
     {

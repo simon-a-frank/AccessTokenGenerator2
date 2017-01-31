@@ -7,7 +7,7 @@ using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AccessTokenManager2
+namespace AccessTokenGenerator2
 {
 
     public class OAuthTools

@@ -1,4 +1,4 @@
-﻿namespace AccessTokenManager2
+﻿namespace AccessTokenGenerator2
 {
     partial class FormMain
     {
@@ -99,13 +99,13 @@
             // 
             // comboBoxScope
             // 
-            this.comboBoxScope.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::AccessTokenManager2.Properties.Settings.Default, "Scope", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.comboBoxScope.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::AccessTokenGenerator2.Properties.Settings.Default, "Scope", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.comboBoxScope.FormattingEnabled = true;
             this.comboBoxScope.Location = new System.Drawing.Point(9, 179);
             this.comboBoxScope.Name = "comboBoxScope";
             this.comboBoxScope.Size = new System.Drawing.Size(435, 21);
             this.comboBoxScope.TabIndex = 4;
-            this.comboBoxScope.Text = global::AccessTokenManager2.Properties.Settings.Default.Scope;
+            this.comboBoxScope.Text = global::AccessTokenGenerator2.Properties.Settings.Default.Scope;
             // 
             // linkLabelScopeInfo
             // 
@@ -225,13 +225,13 @@
             // 
             // textBoxEndpoint
             // 
-            this.textBoxEndpoint.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::AccessTokenManager2.Properties.Settings.Default, "Endpoint", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.textBoxEndpoint.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::AccessTokenGenerator2.Properties.Settings.Default, "Endpoint", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.textBoxEndpoint.Enabled = false;
             this.textBoxEndpoint.Location = new System.Drawing.Point(10, 339);
             this.textBoxEndpoint.Name = "textBoxEndpoint";
             this.textBoxEndpoint.Size = new System.Drawing.Size(434, 20);
             this.textBoxEndpoint.TabIndex = 8;
-            this.textBoxEndpoint.Text = global::AccessTokenManager2.Properties.Settings.Default.Endpoint;
+            this.textBoxEndpoint.Text = global::AccessTokenGenerator2.Properties.Settings.Default.Endpoint;
             // 
             // comboBoxSettings
             // 
@@ -246,8 +246,8 @@
             // 
             // checkBoxAuthGrant
             // 
-            this.checkBoxAuthGrant.Checked = global::AccessTokenManager2.Properties.Settings.Default.UserAuthCode;
-            this.checkBoxAuthGrant.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::AccessTokenManager2.Properties.Settings.Default, "UserAuthCode", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.checkBoxAuthGrant.Checked = global::AccessTokenGenerator2.Properties.Settings.Default.UserAuthCode;
+            this.checkBoxAuthGrant.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::AccessTokenGenerator2.Properties.Settings.Default, "UserAuthCode", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.checkBoxAuthGrant.Location = new System.Drawing.Point(9, 256);
             this.checkBoxAuthGrant.Name = "checkBoxAuthGrant";
             this.checkBoxAuthGrant.Size = new System.Drawing.Size(422, 25);
@@ -259,13 +259,13 @@
             // 
             // textBoxClientSecret
             // 
-            this.textBoxClientSecret.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::AccessTokenManager2.Properties.Settings.Default, "ClientSecret", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.textBoxClientSecret.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::AccessTokenGenerator2.Properties.Settings.Default, "ClientSecret", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.textBoxClientSecret.Enabled = false;
             this.textBoxClientSecret.Location = new System.Drawing.Point(10, 300);
             this.textBoxClientSecret.Name = "textBoxClientSecret";
             this.textBoxClientSecret.Size = new System.Drawing.Size(434, 20);
             this.textBoxClientSecret.TabIndex = 7;
-            this.textBoxClientSecret.Text = global::AccessTokenManager2.Properties.Settings.Default.ClientSecret;
+            this.textBoxClientSecret.Text = global::AccessTokenGenerator2.Properties.Settings.Default.ClientSecret;
             // 
             // textBoxAccessToken
             // 
@@ -315,12 +315,12 @@
             // 
             // textBoxAuthServer
             // 
-            this.textBoxAuthServer.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::AccessTokenManager2.Properties.Settings.Default, "AuthServer", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.textBoxAuthServer.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::AccessTokenGenerator2.Properties.Settings.Default, "AuthServer", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.textBoxAuthServer.Location = new System.Drawing.Point(9, 230);
             this.textBoxAuthServer.Name = "textBoxAuthServer";
             this.textBoxAuthServer.Size = new System.Drawing.Size(435, 20);
             this.textBoxAuthServer.TabIndex = 5;
-            this.textBoxAuthServer.Text = global::AccessTokenManager2.Properties.Settings.Default.AuthServer;
+            this.textBoxAuthServer.Text = global::AccessTokenGenerator2.Properties.Settings.Default.AuthServer;
             // 
             // label3
             // 
@@ -344,12 +344,12 @@
             // 
             // textBoxRedirectionUrl
             // 
-            this.textBoxRedirectionUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::AccessTokenManager2.Properties.Settings.Default, "RedirUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.textBoxRedirectionUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::AccessTokenGenerator2.Properties.Settings.Default, "RedirUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.textBoxRedirectionUrl.Location = new System.Drawing.Point(9, 128);
             this.textBoxRedirectionUrl.Name = "textBoxRedirectionUrl";
             this.textBoxRedirectionUrl.Size = new System.Drawing.Size(435, 20);
             this.textBoxRedirectionUrl.TabIndex = 3;
-            this.textBoxRedirectionUrl.Text = global::AccessTokenManager2.Properties.Settings.Default.RedirUrl;
+            this.textBoxRedirectionUrl.Text = global::AccessTokenGenerator2.Properties.Settings.Default.RedirUrl;
             // 
             // label1
             // 
@@ -363,12 +363,12 @@
             // 
             // textBoxClientID
             // 
-            this.textBoxClientID.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::AccessTokenManager2.Properties.Settings.Default, "ClientId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.textBoxClientID.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::AccessTokenGenerator2.Properties.Settings.Default, "ClientId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.textBoxClientID.Location = new System.Drawing.Point(9, 77);
             this.textBoxClientID.Name = "textBoxClientID";
             this.textBoxClientID.Size = new System.Drawing.Size(435, 20);
             this.textBoxClientID.TabIndex = 2;
-            this.textBoxClientID.Text = global::AccessTokenManager2.Properties.Settings.Default.ClientId;
+            this.textBoxClientID.Text = global::AccessTokenGenerator2.Properties.Settings.Default.ClientId;
             // 
             // textBoxLog
             // 

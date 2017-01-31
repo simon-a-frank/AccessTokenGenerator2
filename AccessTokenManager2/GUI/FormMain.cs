@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace AccessTokenManager2
+namespace AccessTokenGenerator2
 {
     //TODO Link zu Projekt-Website, Lizenz-Info, Autor
     public partial class FormMain : Form
@@ -240,7 +240,7 @@ namespace AccessTokenManager2
             //Version in Log ausgeben (nicht möglich in Debug)
             if (ApplicationDeployment.IsNetworkDeployed)
             {
-                logMessage("Access Token Manager Version " + ApplicationDeployment.CurrentDeployment.CurrentVersion + " started.");
+                logMessage("Access Token Generator Version " + ApplicationDeployment.CurrentDeployment.CurrentVersion + " started.");
             }
             
         }

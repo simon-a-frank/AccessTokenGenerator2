@@ -7,8 +7,8 @@
     <ProjectGuid>{C94C6743-3AB2-4912-A605-FB453444438F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AccessTokenManager2</RootNamespace>
-    <AssemblyName>AccessTokenManager2</AssemblyName>
+    <RootNamespace>AccessTokenGenerator2</RootNamespace>
+    <AssemblyName>AccessTokenGenerator2</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -24,7 +24,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>Access Token Manager 2</ProductName>
-    <PublisherName>Access Token Manager 2</PublisherName>
+    <PublisherName>Access Token Generator 2</PublisherName>
     <ApplicationRevision>9</ApplicationRevision>
     <ApplicationVersion>2.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
@@ -51,7 +51,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>GUI\Key.ico</ApplicationIcon>
+    <ApplicationIcon>Key.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>1FF9968416B35C4550A15162A1FE8BE1237A2C1D</ManifestCertificateThumbprint>
@@ -72,7 +72,7 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>AccessTokenManager2.Program</StartupObject>
+    <StartupObject>AccessTokenGenerator2.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -132,6 +132,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="GUI\Key.ico" />
+    <Content Include="Key.ico" />
     <Content Include="SocialNetworks.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
