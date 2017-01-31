@@ -8,6 +8,7 @@ using System.Windows.Forms;
 
 namespace AccessTokenManager2
 {
+    //TODO Link zu Projekt-Website, Lizenz-Info, Autor
     public partial class FormMain : Form
     {
         /// <summary>
@@ -16,6 +17,7 @@ namespace AccessTokenManager2
         private OAuthTools oAuthTools;
         private List<SocialNetwork> socialNetworks;
         private int selectedNetwork;
+        private static bool firstRunComboBox=true;
 
         public FormMain(OAuthTools c, List<SocialNetwork> sn)
         {
@@ -133,6 +135,8 @@ namespace AccessTokenManager2
                 Properties.Settings.Default.SelectedSetting = comboBoxSettings.SelectedIndex;
                 Properties.Settings.Default.Save();
             }
+            //TODO Access Token abspeichern (verschlüsselt?)
+
         }
 
         private void buttonOpenUrl_Click(object sender, EventArgs e)
@@ -176,15 +180,19 @@ namespace AccessTokenManager2
                 
                 logMessage("Get Access Token with Code, Params: " + parametersForPost);
 
-                string antwort=oAuthTools.getTokenWithAuthCode(parametersForPost, textBoxEndpoint.Text);
+                OAuthResponse oAuthResponse = oAuthTools.getTokenWithAuthCode(parametersForPost, textBoxEndpoint.Text);
 
-                logMessage("Response: " + antwort);
-
-                if (!antwort.Contains("Error"))
+                if (oAuthResponse.success)
                 {
-                    textBoxAccessToken.Text = antwort;
-                    logMessage("Access Token found: " + antwort);
+                    textBoxAccessToken.Text = oAuthResponse.accessToken;
+                    logMessage("Access Token found: " + oAuthResponse.accessToken);
+                    int days = oAuthResponse.expires / 60 / 60 / 24;
+                    logMessage("Access Token expires in: " + oAuthResponse.expires.ToString() + " seconds (" + days  +" days)");
                     textBoxAccessToken.BackColor = Color.LightGreen;
+                }
+                else
+                {
+                    logMessage("Response (Error): " + oAuthResponse.errorMessage);
                 }
 
 
@@ -240,6 +248,9 @@ namespace AccessTokenManager2
         private void comboBoxSettings_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+            
+
+
             //wird in der Settings-Combobox ein anderes Social Network gewählt
             //werden die entsprechenden Daten im Formular angezeigt
 
@@ -277,6 +288,18 @@ namespace AccessTokenManager2
             {
                 comboBoxScope.Items.Add(socialNetworks.ElementAt(selectedNetwork).Scopes.ElementAt(i).ScopeName);
             }
+
+            //Access-Token löschen
+            textBoxAccessToken.Text = "";
+
+
+            //Scope löschen - nicht beim ersten Aufruf, da hier ggf. die Settings geladen werden
+            if (!firstRunComboBox)
+            { 
+                comboBoxScope.Text = "";
+            }
+
+            firstRunComboBox = false;
 
         }
 

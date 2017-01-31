@@ -36,8 +36,11 @@ namespace AccessTokenManager2
             return paramValue;
         }
 
-        public string getTokenWithAuthCode(string parameters, string url)
+        public OAuthResponse getTokenWithAuthCode(string parameters, string url)
         {
+
+            OAuthResponse oAuthResponse = new OAuthResponse();
+
             //WebClient anlegen
             WebClient myWebClient = new WebClient();
 
@@ -58,9 +61,11 @@ namespace AccessTokenManager2
                 response = System.Text.Encoding.ASCII.GetString(antwort);
                 
                 //bei Plain-Text Antworten sind die ersten 13 Zeichen "access_token=" und können entfernt werden
+                //in diesem Fall wird auch kein expires zurückgegeben
                 if (response.StartsWith("access_token="))
                 {
-                    response = response.Remove(0, 13);
+                    oAuthResponse.success = true;
+                    oAuthResponse.accessToken = response.Remove(0, 13);
                 }                
                 else if (response.StartsWith("{"))
                 {
@@ -68,17 +73,19 @@ namespace AccessTokenManager2
                     MemoryStream ms = new MemoryStream(antwort);
                     DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(JsonAccessToken));
                     JsonAccessToken token = ser.ReadObject(ms) as JsonAccessToken;
-                    response = token.access_token;
+                    oAuthResponse.success = true;
+                    oAuthResponse.accessToken = token.access_token;
+                    oAuthResponse.expires = token.expires_in;
                 }
-                
-                
+
             }
             catch (Exception ex)
             {
-                response = "Error: " + ex.Message;
+                oAuthResponse.success = false;
+                oAuthResponse.errorMessage= ex.Message;
             }
 
-            return response;
+            return oAuthResponse;
         }
 
         public string getJsonData(string url)

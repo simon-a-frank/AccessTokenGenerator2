@@ -17,8 +17,7 @@ namespace AccessTokenManager2
         [DataMember]
         public string access_token { get; set; }
 
-        //es gibt teilweise noch andere Felder, z. B. "expires" - diese werden hier nicht benötigt
-        //[DataMember]
-        //public int expires { get; set; }
+        [DataMember]
+        public int expires_in { get; set; }
     }
 }

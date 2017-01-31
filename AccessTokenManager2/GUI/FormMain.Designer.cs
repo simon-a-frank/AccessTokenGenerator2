@@ -95,7 +95,7 @@
             this.groupBox1.Size = new System.Drawing.Size(450, 689);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "OAuth Settings";
+            this.groupBox1.Text = "OAuth 2.0 Settings";
             // 
             // comboBoxScope
             // 
@@ -271,6 +271,7 @@
             // 
             this.textBoxAccessToken.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxAccessToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxAccessToken.Location = new System.Drawing.Point(10, 439);
             this.textBoxAccessToken.Multiline = true;
             this.textBoxAccessToken.Name = "textBoxAccessToken";
@@ -390,6 +391,7 @@
             this.webBrowser1.Location = new System.Drawing.Point(468, 40);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.ScriptErrorsSuppressed = true;
             this.webBrowser1.Size = new System.Drawing.Size(693, 522);
             this.webBrowser1.TabIndex = 1;
             this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
@@ -436,7 +438,7 @@
             this.Controls.Add(this.textBoxLog);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormMain";
-            this.Text = "Access Token Manager and Generator";
+            this.Text = "Access Token Generator for Auth 2.0";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMain_FormClosed);
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.groupBox1.ResumeLayout(false);
