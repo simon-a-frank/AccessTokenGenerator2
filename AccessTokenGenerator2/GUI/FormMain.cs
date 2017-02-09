@@ -156,46 +156,18 @@ namespace AccessTokenGenerator2
             textBoxNavigation.Text = webBrowser1.Url.ToString();
             logMessage("Document completed: " + webBrowser1.Url.ToString());
 
-            //ist in der URL bereits ein Access-Token?
-            if (textBoxNavigation.Text.Contains("access_token="))
+            string[] ergebnis=oAuthTools.analyseBrowserResult(textBoxNavigation.Text,
+                textBoxClientID.Text, textBoxClientSecret.Text, textBoxRedirectionUrl.Text, 
+                textBoxEndpoint.Text);
+
+            logMessage(ergebnis[1]);
+            
+            if (!ergebnis[0].Contains("error"))
             {
-                string accesstoken = oAuthTools.parseParameter(textBoxNavigation.Text,"access_token");                
-                logMessage("Access Token found: " + accesstoken);
-                textBoxAccessToken.Text = accesstoken;
+                textBoxAccessToken.Text = ergebnis[0];
+                logMessage("Access Token found: " + ergebnis[0]);
+                textBoxAccessToken.Text = ergebnis[0];
                 textBoxAccessToken.BackColor = Color.LightGreen;
-                buttonStart.Enabled = true;
-            }
-            //Oder Auth-Code?
-            else if (textBoxNavigation.Text.Contains("code="))
-            {
-                string code = oAuthTools.parseParameter(textBoxNavigation.Text, "code");
-                logMessage("Code Token found: " + code);
-
-                string parametersForPost = ""
-                    + "client_id=" + textBoxClientID.Text
-                    + "&client_secret=" + textBoxClientSecret.Text
-                    + "&grant_type=authorization_code"
-                    + "&redirect_uri=" + textBoxRedirectionUrl.Text
-                    + "&code=" + code;
-                
-                logMessage("Get Access Token with Code, Params: " + parametersForPost);
-
-                OAuthResponse oAuthResponse = oAuthTools.getTokenWithAuthCode(parametersForPost, textBoxEndpoint.Text);
-
-                if (oAuthResponse.success)
-                {
-                    textBoxAccessToken.Text = oAuthResponse.accessToken;
-                    logMessage("Access Token found: " + oAuthResponse.accessToken);
-                    int days = oAuthResponse.expires / 60 / 60 / 24;
-                    logMessage("Access Token expires in: " + oAuthResponse.expires.ToString() + " seconds (" + days  +" days)");
-                    textBoxAccessToken.BackColor = Color.LightGreen;
-                }
-                else
-                {
-                    logMessage("Response (Error): " + oAuthResponse.errorMessage);
-                }
-
-
             }
 
         }
@@ -247,9 +219,6 @@ namespace AccessTokenGenerator2
 
         private void comboBoxSettings_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            
-
 
             //wird in der Settings-Combobox ein anderes Social Network gewählt
             //werden die entsprechenden Daten im Formular angezeigt

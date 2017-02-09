@@ -89,11 +89,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OAuthResponse.cs" />
+    <Compile Include="OAuth\OAuthResponse.cs" />
     <Compile Include="Serialization\JsonAccessToken.cs" />
     <Compile Include="Serialization\Scope.cs" />
     <Compile Include="Serialization\SocialNetwork.cs" />
-    <Compile Include="OAuthTools.cs" />
+    <Compile Include="OAuth\OAuthTools.cs" />
     <Compile Include="GUI\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -59,14 +59,14 @@ namespace AccessTokenGenerator2
             {
                 antwort = myWebClient.UploadData(url, "POST", param);
                 response = System.Text.Encoding.ASCII.GetString(antwort);
-                
+
                 //bei Plain-Text Antworten sind die ersten 13 Zeichen "access_token=" und können entfernt werden
                 //in diesem Fall wird auch kein expires zurückgegeben
                 if (response.StartsWith("access_token="))
                 {
                     oAuthResponse.success = true;
                     oAuthResponse.accessToken = response.Remove(0, 13);
-                }                
+                }
                 else if (response.StartsWith("{"))
                 {
                     //dann ist die Antwort JSON: deserialisieren
@@ -82,7 +82,7 @@ namespace AccessTokenGenerator2
             catch (Exception ex)
             {
                 oAuthResponse.success = false;
-                oAuthResponse.errorMessage= ex.Message;
+                oAuthResponse.errorMessage = ex.Message;
             }
 
             return oAuthResponse;
@@ -109,8 +109,56 @@ namespace AccessTokenGenerator2
             //Ausgabe etwas übersichtlicher gestalten:
             response = response.Replace(",", ",\n\r");
             response = response.Replace("{", "\n\r{");
-            
+
             return response;
+        }
+
+        public string[] analyseBrowserResult(string textNavigation, string clientID, string clientSecret, string redirUrl, string endPoint)
+        {
+            string logMessage = "";
+
+            //ist in der URL bereits ein Access-Token?
+            if (textNavigation.Contains("access_token="))
+            {
+                string accesstoken = parseParameter(textNavigation, "access_token");
+                return new string[] { accesstoken, logMessage };
+            }
+            //Oder Auth-Code?
+            else if (textNavigation.Contains("code="))
+            {
+                string code = parseParameter(textNavigation, "code");
+
+                string parametersForPost = ""
+                    + "client_id=" + clientID
+                    + "&client_secret=" + clientSecret
+                    + "&grant_type=authorization_code"
+                    + "&redirect_uri=" + redirUrl
+                    + "&code=" + code;
+
+                logMessage += "Get Access Token with Code, Params: " + parametersForPost + "\r\n";
+
+                OAuthResponse oAuthResponse = getTokenWithAuthCode(parametersForPost, endPoint);
+
+                if (oAuthResponse.success)
+                {
+                    logMessage += "Access Token found: " + oAuthResponse.accessToken;
+
+                    if (oAuthResponse.expires>0)
+                    { 
+                        int days = oAuthResponse.expires / 60 / 60 / 24;
+                        logMessage+="\r\nAccess Token expires in: " + oAuthResponse.expires.ToString() + " seconds (" + days + " days)";
+                    }
+                    return new string[] { oAuthResponse.accessToken, logMessage };
+                }
+                else
+                {
+                    return new string[] { "Response (Error): " + oAuthResponse.errorMessage, logMessage };
+                }
+            }
+            else
+            {
+                return new string[] { "Unknown Error", logMessage };
+            }
         }
     }
 }
