@@ -169,6 +169,11 @@ namespace AccessTokenGenerator2
                 textBoxAccessToken.Text = ergebnis[0];
                 textBoxAccessToken.BackColor = Color.LightGreen;
             }
+            else
+            {
+                //Fehler ausgeben
+                logMessage(ergebnis[0]);
+            }
 
         }
 
