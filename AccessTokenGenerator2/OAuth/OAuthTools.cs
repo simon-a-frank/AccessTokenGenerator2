@@ -69,6 +69,7 @@ namespace AccessTokenGenerator2
                 }
                 else if (response.StartsWith("{"))
                 {
+
                     //dann ist die Antwort JSON: deserialisieren
                     MemoryStream ms = new MemoryStream(antwort);
                     DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(JsonAccessToken));
@@ -76,6 +77,7 @@ namespace AccessTokenGenerator2
                     oAuthResponse.success = true;
                     oAuthResponse.accessToken = token.access_token;
                     oAuthResponse.expires = token.expires_in;
+                    oAuthResponse.refreshToken = token.refresh_token;
                 }
 
             }
@@ -148,6 +150,10 @@ namespace AccessTokenGenerator2
                         int days = oAuthResponse.expires / 60 / 60 / 24;
                         logMessage+="\r\nAccess Token expires in: " + oAuthResponse.expires.ToString() + " seconds (" + days + " days)";
                     }
+                    if (!String.IsNullOrEmpty(oAuthResponse.refreshToken))
+                    {
+                        logMessage += "\r\nRefresh Token: " + oAuthResponse.refreshToken + "";
+                    }
                     return new string[] { oAuthResponse.accessToken, logMessage };
                 }
                 else
@@ -157,7 +163,8 @@ namespace AccessTokenGenerator2
             }
             else
             {
-                return new string[] { "Unknown Error", logMessage };
+                //Ein Zwischenschritt, z. B. bei Google die Rechte-Bestätigung: hier einfach nichts ausgeben
+                return new string[] { "", logMessage };
             }
         }
     }

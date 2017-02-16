@@ -162,7 +162,7 @@ namespace AccessTokenGenerator2
 
             logMessage(ergebnis[1]);
             
-            if (!ergebnis[0].Contains("error"))
+            if (!ergebnis[0].Contains("error") && ergebnis[0] != "")
             {
                 textBoxAccessToken.Text = ergebnis[0];
                 logMessage("Access Token found: " + ergebnis[0]);
@@ -175,15 +175,29 @@ namespace AccessTokenGenerator2
                 logMessage(ergebnis[0]);
             }
 
+            // Bei Aufrufen von "localhost" eine leere Seite einblenden um verwirrende 
+            // Fehlermeldung (die keine ist) schnell auszublenden
+            if (webBrowser1.Url.ToString().StartsWith("http://127")
+                    || webBrowser1.Url.ToString().StartsWith("http://localhost")
+                    || webBrowser1.Url.ToString().StartsWith("https://127")
+                    || webBrowser1.Url.ToString().StartsWith("https://localhost")
+                )
+            {
+                webBrowser1.Navigate("about:blank");
+            }
+
         }
 
         private void logMessage(string message)
         {
-            textBoxLog.Text = DateTime.Now.ToString()
-                + ": "
-                + message 
-                + "\r\n"
-                + textBoxLog.Text;
+            if (message != "")
+            { 
+                textBoxLog.Text = DateTime.Now.ToString()
+                    + ": "
+                    + message 
+                    + "\r\n"
+                    + textBoxLog.Text;
+            }
         }
 
         private void FormMain_Load(object sender, EventArgs e)

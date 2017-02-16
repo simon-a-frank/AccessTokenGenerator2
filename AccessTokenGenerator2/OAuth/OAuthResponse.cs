@@ -12,6 +12,7 @@ namespace AccessTokenGenerator2
         public string errorMessage { get; set; }
         public string accessToken { get; set; }
         public int expires { get; set; }
+        public string refreshToken { get; set; }
 
     }
 }

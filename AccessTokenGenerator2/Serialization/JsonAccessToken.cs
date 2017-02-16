@@ -19,5 +19,8 @@ namespace AccessTokenGenerator2
 
         [DataMember]
         public int expires_in { get; set; }
+
+        [DataMember]
+        public string refresh_token { get; set; }
     }
 }
