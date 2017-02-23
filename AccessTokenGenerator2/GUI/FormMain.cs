@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Deployment.Application;
 using System.Drawing;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Windows.Forms;
 
 namespace AccessTokenGenerator2
@@ -25,14 +26,6 @@ namespace AccessTokenGenerator2
             oAuthTools = c;
             socialNetworks = sn;
 
-            //für das Browser-Steuerelement muss in der Registry
-            //die Internet-Explorer-Version eingestellt werden, die
-            //es simmulieren soll (ansonsten ist die Version 7 voreingestellt,
-            //was den Browser sozusagen unbruachbar macht)
-            //die folgende Zeile stellt IE Version 11 ein:
-
-            Registry.SetValue(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION",
-                    AppDomain.CurrentDomain.FriendlyName, "11000", RegistryValueKind.DWord);
         }
 
         private void checkBoxAuthGrant_CheckedChanged(object sender, EventArgs e)
