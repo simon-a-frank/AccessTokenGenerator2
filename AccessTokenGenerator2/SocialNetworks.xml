@@ -36,10 +36,15 @@
       <Scope>
         <ScopeName>user_managed_groups</ScopeName>
       </Scope>
-      <Description>
-        Für den API-Test "Get manageged pages" ist die Scope "manage_pages", für "Get last posts" die Scope "user_post" erforderlich.
-      </Description>
+      <Scope>
+        <ScopeName>public_profile</ScopeName>
+      </Scope>
     </Scopes>
+    <Description>
+      Für den API-Test "Get manageged pages" ist die Scope "manage_pages", für "Get last posts" die Scope "user_post" erforderlich.
+      
+      Das Scope "public_profile" muss nicht explizit angegeben werden, dies ist jeder Anfrage implizit. Facebook empfiehlt trotzdem, dieses Scope jedes mal zu verwenden.
+    </Description>
   </SocialNetwork>
   <SocialNetwork>
     <NetworkName>LinkedIn</NetworkName>

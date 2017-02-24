@@ -28,10 +28,10 @@ namespace AccessTokenGenerator2
             //die Internet-Explorer-Version eingestellt werden, die
             //es simmulieren soll (ansonsten ist die Version 7 voreingestellt,
             //was den Browser sozusagen unbruachbar macht)
-            
 
-            //Hier wird geprüft ob es den Reg-Eintrag gibt
-            RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION\");
+            //Hier wird geprüft ob es den Registry-Eintrag gibt
+            RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Internet Explorer\" 
+                                + @"Main\FeatureControl\FEATURE_BROWSER_EMULATION\");
             try
             {
                 string v = key.GetValue(AppDomain.CurrentDomain.FriendlyName).ToString();
@@ -43,13 +43,18 @@ namespace AccessTokenGenerator2
             {
                 //jetzt muss die Registry angelegt werden!
                 MessageBox.Show("Error: Registry-Setting missing - Updating ...");
+                //TODO: Yes or now?
                 
                 //folgendes geht leider nicht für ClickOnce-Anwendungen, das benötigt Admin-Rechte
                 //Registry.SetValue(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION",
                 //    AppDomain.CurrentDomain.FriendlyName, "11000", RegistryValueKind.DWord);
 
                 //deshalb: regedit mit Datei starten
-                string p = "/s " + System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\regupdate.reg";
+                string p = "/s " + System.IO.Path.GetDirectoryName(System
+                    .Reflection
+                    .Assembly
+                    .GetExecutingAssembly()
+                    .Location) + @"\regupdate.reg";
 
                 Process regeditProcess = Process.Start("regedit.exe", p);
                 regeditProcess.WaitForExit();
